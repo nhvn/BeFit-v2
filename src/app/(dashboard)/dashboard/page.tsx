@@ -11,8 +11,8 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import WeightCardSuspense from "@/components/dashboard/weight-card-suspense"
-import { Overview } from "@/components/overview"
-import { RecentActivity } from "@/components/recent-activity"
+import { Overview } from "@/components/PHoverview"
+import { RecentActivity } from "@/components/PHrecent-activity"
 
 import { CardSkeleton } from "./loading"
 
@@ -63,15 +63,15 @@ export default async function Page() {
 
         {/* Overview/ Recent Activities */}
         <div className="flex flex-col space-y-5 max-sm:hidden sm:block">
-          <Card className="col-span-4">
+          {/* <Card className="col-span-4">
             <CardHeader>
               <CardTitle>Overview</CardTitle>
             </CardHeader>
             <CardContent>
               <Overview />
             </CardContent>
-          </Card>
-          <Card className="col-span-3">
+          </Card> */}
+          {/* <Card className="col-span-3">
             <CardHeader>
               <CardTitle>Recent Sales</CardTitle>
               <CardDescription>You made 265 sales this month.</CardDescription>
@@ -79,7 +79,7 @@ export default async function Page() {
             <CardContent>
               <RecentActivity />
             </CardContent>
-          </Card>
+          </Card> */}
         </div>
       </div>
     </>

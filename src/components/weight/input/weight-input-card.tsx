@@ -32,7 +32,7 @@ export const WeightInputCard = ({ user_id, weight }: Props) => {
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">
-            Today&apos;s Weight
+            Last Updated Weight
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -56,7 +56,8 @@ export const WeightInputCard = ({ user_id, weight }: Props) => {
           </div>
         </CardContent>
         <CardFooter>
-          {isToday ? <></> : <WeightDialog user_id={user_id} />}
+          {/* Turned off box disappearing so users can make many inputs. */}
+          <WeightDialog user_id={user_id} /> 
         </CardFooter>
       </Card>
     </>

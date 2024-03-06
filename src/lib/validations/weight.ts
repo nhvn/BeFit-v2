@@ -3,7 +3,6 @@ import * as z from "zod"
 export const weightSchema = z.object({
   weight: z.string().max(32),
   description: z.string().max(200),
-  // weight_url: z.string().max(150),
   weight_url: z.custom((value) => {
     if (value instanceof File) {
       // File validation logic here (e.g., file size, file type)
@@ -13,4 +12,6 @@ export const weightSchema = z.object({
     }
   }),
   user_id: z.string().uuid().nullable(),
+  date: z.string().optional(), 
 })
+

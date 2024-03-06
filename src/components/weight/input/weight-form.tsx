@@ -47,6 +47,7 @@ export function WeightForm({ user_id, setOpen }: TableFormProps) {
       description: "",
       weight_url: null, // Initialize weight_url as null
       user_id: user_id,
+      date: '',
     },
   })
 
@@ -93,6 +94,7 @@ export function WeightForm({ user_id, setOpen }: TableFormProps) {
             description: data.description,
             weight_url: uploaded_url,
             user_id: user_id,
+            date: data.date,
           },
         ])
         .select()
@@ -145,7 +147,25 @@ export function WeightForm({ user_id, setOpen }: TableFormProps) {
             </FormItem>
           )}
         />
-
+        {/* NEWLY ADDED COLUMN FOR DATES */}
+        <FormField
+          control={form.control}
+          name="date"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Date</FormLabel>
+              <FormControl>
+                <Input type="date" {...field} max={new Date().toISOString().split('T')[0]} />
+              </FormControl>
+              <FormDescription>Select the date for this weight update.</FormDescription>
+              {form.formState.errors.date && (
+                <FormMessage>
+                  {form.formState.errors.date.message}
+                </FormMessage>
+              )}
+            </FormItem>
+          )}
+        />
         <FormField
           control={form.control}
           name="description"

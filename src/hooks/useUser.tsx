@@ -34,7 +34,7 @@ export const MyUserContextProvider = (props: Props) => {
   const [subscription, setSubscription] = useState<Subscription | null>(null)
 
   // maybeSingle allows for null response
-  const getUserDetails = () => supabase.from("users").select("*").maybeSingle()
+  const getUserDetails = () => supabase.from("users_id").select("*").maybeSingle()
   const getSubscription = () =>
     supabase
       .from("subscriptions")

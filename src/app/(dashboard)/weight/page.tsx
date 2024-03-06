@@ -21,19 +21,17 @@ export default async function Page() {
 
   return (
     <div className="flex-1 space-y-4 p-8 pt-6">
+      {/* WEIGHT GRAPH */}
       <Suspense fallback={<LoadingWeightGraph />}>
-        {/* @ts-ignore */}
         <WeightGraphSuspense user_id={session.user.id} />
       </Suspense>
-
+      {/* USER WEIGHT INPUT */}
       <Suspense fallback={<LoadingWeightInput />}>
-        {/* @ts-ignore */}
         <WeightInputSuspense user_id={session.user.id} />
       </Suspense>
 
-      {/* Displays tabs with table and photos */}
+      {/* TABS WITH TABLE AND PHOTOS */}
       <Suspense fallback={<LoadingWeightTabs />}>
-        {/* @ts-ignore */}
         <WeightTabsSuspense user_id={session.user.id} />
       </Suspense>
     </div>

@@ -1,6 +1,7 @@
 import { Suspense } from "react"
 import Link from "next/link"
 import { redirect } from "next/navigation"
+import WeightGraphSuspense from "@/components/weight/suspense/weight-graph-suspense"
 
 import { getServerSession } from "@/lib/session"
 import {
@@ -63,15 +64,15 @@ export default async function Page() {
 
         {/* Overview/ Recent Activities */}
         <div className="flex flex-col space-y-5 max-sm:hidden sm:block">
-          {/* <Card className="col-span-4">
+          <Card className="col-span-4">
             <CardHeader>
               <CardTitle>Overview</CardTitle>
             </CardHeader>
             <CardContent>
               <Overview />
             </CardContent>
-          </Card> */}
-          {/* <Card className="col-span-3">
+          </Card>
+          <Card className="col-span-3">
             <CardHeader>
               <CardTitle>Recent Sales</CardTitle>
               <CardDescription>You made 265 sales this month.</CardDescription>
@@ -79,7 +80,7 @@ export default async function Page() {
             <CardContent>
               <RecentActivity />
             </CardContent>
-          </Card> */}
+          </Card>
         </div>
       </div>
     </>

@@ -1,3 +1,4 @@
+// FIX THIS
 "use client"
 
 import { useState } from "react"
@@ -5,7 +6,8 @@ import { ColumnDef } from "@tanstack/react-table"
 import { MoreHorizontal } from "lucide-react"
 
 import { Weight } from "@/types/weight"
-import { formatCreatedAt } from "@/lib/format-date"
+// import { formatCreatedAt } from "@/lib/format-date"
+import { formatDate } from "@/lib/format-date2"
 import { Button, buttonVariants } from "@/components/ui/button"
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -60,29 +62,42 @@ export const columns: ColumnDef<Weight>[] = [
     header: "Description",
   },
   {
-    accessorKey: "created_at",
+    // CHANGING ACCESSORKEY FIX THIS
+    accessorKey: "date",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Created At
+          Date
           <Icons.arrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )
     },
     cell: ({ row }) => {
-      const time_stamp = row.getValue("created_at")
-
-      const { time, date } = formatCreatedAt(time_stamp)
-
-      return (
-        <>
-          {date}, {time}
-        </>
-      )
+      
+      const time_stamp = row.getValue("date")
+    
+      // Check if time_stamp is defined
+      if (time_stamp && typeof time_stamp === 'string') {
+        const formattedDate = formatDate(time_stamp)
+        return (
+          <>
+            {formattedDate}
+          </>
+        )
+      } else {
+        // Handle rows without a 'date' property
+        return (
+          <>
+            Date not available
+          </>
+        )
+      }
     },
+    
+    
   },
   {
     id: "actions",

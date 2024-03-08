@@ -4,6 +4,7 @@ import React from "react"
 
 import { Weight } from "@/types/weight"
 import { formatCreatedAt } from "@/lib/format-date"
+// import { formatDate } from "@/lib/format-date2"
 import {
   Card,
   CardContent,
@@ -19,6 +20,7 @@ interface Props {
   weight: Weight
 }
 
+// FIX CREATEDAT
 export const WeightInputCard = ({ user_id, weight }: Props) => {
   const { date: today } = formatCreatedAt(new Date())
   const mostRecentDate = weight?.created_at

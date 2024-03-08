@@ -1,3 +1,5 @@
+// USED FOR CREATEDAT - DO NOT WANT TO USE FOR THE MOST PART
+
 export function formatCreatedAt(time_stamp: string | Date | unknown) {
   let timestampDate: Date
 

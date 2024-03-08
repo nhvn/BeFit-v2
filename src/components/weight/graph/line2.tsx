@@ -1,3 +1,5 @@
+// IN USE - LINE GRAPH
+
 "use client"
 
 import React from "react"
@@ -18,7 +20,8 @@ import {
 } from "recharts/types/component/DefaultTooltipContent"
 
 import { Weight } from "@/types/weight"
-import { formatCreatedAt } from "@/lib/format-date"
+// import { formatCreatedAt } from "@/lib/format-date"
+import { formatDate } from "@/lib/format-date2";
 
 interface Props {
   weights: Weight[]
@@ -54,19 +57,19 @@ const WeightLineGraph2: React.FC<Props> = ({
   enableToolTip,
   margin,
 }) => {
-  const formattedData = weights
-    .map((data) => ({
-      created_at: formatCreatedAt(data.created_at).date,
-      weight: data.weight,
-    }))
-    .reverse()
+const formattedData = weights
+  .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+  .map((data) => ({
+    date: formatDate(data.date),
+    weight: data.weight,
+  }));
 
   return (
     <ResponsiveContainer width="100%" height={height}>
       <LineChart margin={margin} data={formattedData}>
         <CartesianGrid stroke="none" />
         <XAxis
-          dataKey="created_at"
+          dataKey="date" // Use "date" instead of "created_at"
           axisLine={false}
           tick={false} // Remove X-axis labels
           interval={Math.ceil(formattedData.length / 5)} // Show only 5 x-axis labels
